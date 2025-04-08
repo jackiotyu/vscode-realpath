@@ -1,0 +1,8 @@
+{
+    "cmd.revealInExplorer": "Reveal Real Path in Explorer",
+    "cmd.revealFileInOS": "Show Real Path in File Explorer",
+    "cmd.revealInNewWindow": "Open Real Path in New Window",
+    "config.showRevealInExplorer.description": "Show/Hide \"Reveal Real Path in Explorer\" option in explorer context menu",
+    "config.showRevealFileInOS.description": "Show/Hide \"Show Real Path in File Explorer\" option in explorer context menu",
+    "config.showRevealInNewWindow.description": "Show/Hide \"Open Real Path in New Window\" option in explorer context menu"
+}

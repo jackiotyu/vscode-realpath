@@ -1,31 +1,97 @@
 {
-  "name": "vscode-extension-rspack",
+  "name": "realpath-util",
   "publisher": "jackiotyu",
-  "displayName": "vscode-extension-rspack",
-  "description": "",
+  "displayName": "Realpath Util",
+  "description": "A Visual Studio Code extension that helps you work with real file paths, especially useful when dealing with symbolic links.",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "realpath",
+    "symlink",
+    "symbolic link",
+    "file path",
+    "explorer",
+    "utility",
+    "软链接",
+    "真实路径",
+    "文件路径"
+  ],
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "license": "MIT",
+  "pricing": "Free",
+  "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackiotyu/vscode-extension-rspack.git"
+    "url": "https://github.com/jackiotyu/vscode-realpath.git"
   },
   "bugs": {
-    "url": "https://github.com/jackiotyu/vscode-extension-rspack/issues"
+    "url": "https://github.com/jackiotyu/vscode-realpath/issues"
   },
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-extension-rspack.helloWorld",
-        "title": "Hello World"
+        "command": "realpath-util.revealInExplorer",
+        "title": "%cmd.revealInExplorer%"
+      },
+      {
+        "command": "realpath-util.revealFileInOS",
+        "title": "%cmd.revealFileInOS%"
+      },
+      {
+        "command": "realpath-util.revealInNewWindow",
+        "title": "%cmd.revealInNewWindow%"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "realpath-util.revealInExplorer",
+          "group": "0_open@97",
+          "when": "config.realpath-util.showRevealInExplorer && resourceScheme == file"
+        },
+        {
+          "command": "realpath-util.revealFileInOS",
+          "group": "0_open@98",
+          "when": "config.realpath-util.showRevealFileInOS && resourceScheme == file"
+        },
+        {
+          "command": "realpath-util.revealInNewWindow",
+          "group": "0_open@99",
+          "when": "config.realpath-util.showRevealInNewWindow && explorerResourceIsFolder"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Realpath Util",
+      "properties": {
+        "realpath-util.showRevealInExplorer": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.showRevealInExplorer.description%"
+        },
+        "realpath-util.showRevealFileInOS": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.showRevealFileInOS.description%"
+        },
+        "realpath-util.showRevealInNewWindow": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.showRevealInNewWindow.description%"
+        }
+      }
+    }
   },
   "scripts": {
     "vsce:pack": "vsce package --no-dependencies",
@@ -46,7 +112,7 @@
     "@swc/helpers": "^0.5.15",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.98.0",
+    "@types/vscode": "^1.60.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "@vscode/test-cli": "^0.0.10",

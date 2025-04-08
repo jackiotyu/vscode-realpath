@@ -1,0 +1,8 @@
+{
+    "cmd.revealInExplorer": "在资源管理器中显示真实路径",
+    "cmd.revealFileInOS": "在文件资源管理器中显示真实路径",
+    "cmd.revealInNewWindow": "在新窗口中显示真实路径",
+    "config.showRevealInExplorer.description": "在资源管理器上下文菜单中显示/隐藏\"在资源管理器中显示真实路径\"选项",
+    "config.showRevealFileInOS.description": "在资源管理器上下文菜单中显示/隐藏\"在文件资源管理器中显示真实路径\"选项",
+    "config.showRevealInNewWindow.description": "在资源管理器上下文菜单中显示/隐藏\"在新窗口中显示真实路径\"选项"
+}

@@ -1,26 +1,39 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import fs from 'fs/promises';
+import path from 'path';
+import { open } from './utils';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    console.log(`realpath-util is now active!`);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscode-extension-rspack" is now active!');
+    const getRealUri = async (uri: vscode.Uri): Promise<vscode.Uri> => {
+        const realpath = await fs.realpath(uri.fsPath || '');
+        return vscode.Uri.file(realpath);
+    };
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscode-extension-rspack.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from vscode-extension-rspack!');
-	});
+    const revealInExplorerCmd = vscode.commands.registerCommand(
+        'realpath-util.revealInExplorer',
+        async (item: vscode.Uri) => {
+            vscode.commands.executeCommand('revealInExplorer', await getRealUri(item));
+        },
+    );
 
-	context.subscriptions.push(disposable);
+    const revealFileInOSCmd = vscode.commands.registerCommand(
+        'realpath-util.revealFileInOS',
+        async (item: vscode.Uri) => {
+            open((await getRealUri(item)).fsPath);
+        },
+    );
+
+    const revealInNewWindowCmd = vscode.commands.registerCommand(
+        'realpath-util.revealInNewWindow',
+        async (item: vscode.Uri) => {
+            const folderUri = await getRealUri(item);
+            vscode.commands.executeCommand('vscode.openFolder', folderUri, { forceNewWindow: true });
+        },
+    );
+
+    context.subscriptions.push(revealInExplorerCmd, revealFileInOSCmd, revealInNewWindowCmd);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}

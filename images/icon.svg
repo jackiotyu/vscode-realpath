@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- 文件夹图标 -->
+    <path d="M24 32h32l8 8h40c4.4 0 8 3.6 8 8v48c0 4.4-3.6 8-8 8H24c-4.4 0-8-3.6-8-8V40c0-4.4 3.6-8 8-8z"
+          fill="#DCB67A"/>
+    <!-- 链接符号 -->
+    <g transform="translate(64, 64) rotate(45)">
+        <path d="M-20,-8 h16 a8,8 0 0 1 8,8 v0 a8,8 0 0 1 -8,8 h-16"
+              stroke="#4EC9B0"
+              stroke-width="6"
+              fill="none"/>
+        <path d="M20,8 h-16 a8,8 0 0 1 -8,-8 v0 a8,8 0 0 1 8,-8 h16"
+              stroke="#4EC9B0"
+              stroke-width="6"
+              fill="none"/>
+    </g>
+    <!-- 箭头 -->
+    <path d="M88 64l12 12-12 12"
+          stroke="#4EC9B0"
+          stroke-width="6"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+</svg>

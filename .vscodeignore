@@ -5,7 +5,7 @@ node_modules/**
 src/**
 .gitignore
 .yarnrc
-rspack.config
+rspack.config.js
 vsc-extension-quickstart.md
 **/tsconfig.json
 **/eslint.config.mjs
